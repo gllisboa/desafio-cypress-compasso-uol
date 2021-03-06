@@ -3,6 +3,8 @@
 
 
 const homeSteps = require('../../home/home.steps')
+const productDetailsSteps = require('../../product_details/product.datails.step')
+
 
 let fadedShortSleeveProduct = {
     name: "Faded Short Sleeve",
@@ -15,7 +17,19 @@ let fadedShortSleeveProduct = {
 
 When(`I add a product 'Faded Short Sleeve' to the shoping cart from the first search result`, () => {
 
-    homeSteps.selectFirstResultOnDropDown(fadedShortSleeveProduct.name)
+
+
+    let selectProductsOptions =  productDetailsSteps.selectProductsOptions
+
+    homeSteps.selectFirstResultOnDropDown(fadedShortSleeveProduct.name,productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct))
+
+
+
+    // productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct)
+
+
+
+
 
 })
 

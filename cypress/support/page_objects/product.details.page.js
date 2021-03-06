@@ -34,6 +34,14 @@ export default class ProductDetails {
             .should('have.value',priceExpect)
     }
 
+    getValueQuantity() {
+
+        cy.get(productDetailsElements.quantityProduct())
+            .then((e) => {
+                return e.value
+            } )
+    }
+
     plusQuantity(nTimes = 1) {
         let oldQuantity = 0
 

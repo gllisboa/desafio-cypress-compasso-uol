@@ -8,33 +8,21 @@
 // O Given de acesso está aqui para que ele seja reaproveito por todos os scenários que acessam a página diretamente
 // Além do reaproveitamento a integração do cucumber tem uma limitação de texto('acess to home page') só pode ser vinculado a um Given como Step
 
-import HomeElements from '../../elements/home.elements'
-import HomePage from '../../page_objects/home.page'
 import ProductDetailsPage from '../../page_objects/product.details.page'
 
 
 
-const urlHome = Cypress.env('url_mystore')
-const homePage = new HomePage
 const productDetailsPage = new ProductDetailsPage
-const homeElements = new HomeElements
 
-Given('acess to home page', () => {
-    cy.visit(`${urlHome}index.php`)
-})
+export function selectProductsOptions (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
+
+    console.log(productDetailsPage.getValueQuantity())
+
+}
 
 
-export  function selectFirstResultOnDropDown (searchText,  c = function(){} ) {
+export function checkProducts (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
 
-    homePage.typeTopSearch(searchText)
-
-    homePage.clickResultItem()
-
-    productDetailsPage.checkPageLoad()
-
-    console.log(c)
-
-    c()
 
 
 

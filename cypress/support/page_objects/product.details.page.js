@@ -6,6 +6,24 @@ const productDetailsElements = new ProductDetailsElements
 
 export default class ProductDetails {
 
+    checkPageLoad(status = 200) {
+
+        switch (status) {
+
+            case 200:
+                cy.wait('@getProductDetails').its('response.statusCode').should('eq', 200)
+                break
+            case 404:
+                cy.wait('@getProductDetails').its('response.statusCode').should('eq', 404)
+                break
+            case 500:
+                cy.wait('@getProductDetails').its('response.statusCode').should('eq', 500)
+                break
+        }
+
+
+    }
+
     checkQuantity(quantityExpect) {
         cy.get(productDetailsElements.quantityProduct())
             .should('have.value',quantityExpect)
@@ -54,6 +72,21 @@ export default class ProductDetails {
         }
 
 
+    }
+
+
+    selectSize(size) {
+        cy.get(productDetailsElements.selectSizeAvaibleProduct())
+            .select(size)
+                .should('have.text',size)
+    }
+
+    pickColor(color) {
+        cy.get(productDetailsElements.listColorsAvaibleProduct())
+            .find('li')
+                .find('a')
+                    .filter(`:contains(${color.toLocaleLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() })})`)
+                        .click()
     }
 
 

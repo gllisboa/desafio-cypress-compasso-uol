@@ -17,6 +17,14 @@ export default class HomePage {
         cy.get(homeElements.divResultsSearchDropDow())
             .should('be.visible')
 
+            //create a route for detailsProductPage for assert load after click item
+            cy.intercept(
+                {
+                  method: 'GET',
+                  url: 'index.php?id_product=*&controller=product',  
+                }
+              ).as('getProductDetails')
+
         if (item == 'first') {
             cy.get(homeElements.listResultsSearchDropDow())
                 .find('li')

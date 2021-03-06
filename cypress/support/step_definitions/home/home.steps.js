@@ -10,31 +10,27 @@
 
 import HomeElements from '../../elements/home.elements'
 import HomePage from '../../page_objects/home.page'
+import ProductDetailsPage from '../../page_objects/product.details.page'
 
 
 
-const urlHome = Cypress.env('url_home')
+const urlHome = Cypress.env('url_mystore')
 const homePage = new HomePage
+const productDetailsPage = new ProductDetailsPage
 const homeElements = new HomeElements
 
 Given('acess to home page', () => {
-    cy.visit(urlHome)
+    cy.visit(`${urlHome}index.php`)
 })
 
 
 export function selectFirstResultOnDropDown (searchText) {
 
-    // homePage.typeTopSearch(searchText)
     homePage.typeTopSearch(searchText)
+
     homePage.clickResultItem()
+
+    productDetailsPage.checkPageLoad()
 
 
 }
-// //Seleciona Supervisão e Filial
-// export function selecionarFilialSupervisao(nomeFilial, nomeSupervisao){
-
-//     painelEmbarquePage.selecionarItemFiltroFilial(nomeFilial,nomeFilial)
-//     painelEmbarquePage.selecionarItemFiltroSupervisao(nomeSupervisao,nomeSupervisao)
-
-// }
-

@@ -24,18 +24,14 @@ Given('acess to home page', () => {
 })
 
 
-export  function selectFirstResultOnDropDown (searchText,  c = function(){} ) {
-
-    homePage.typeTopSearch(searchText)
-
-    homePage.clickResultItem()
-
-    productDetailsPage.checkPageLoad()
-
-    console.log(c)
-
-    c()
+export async function selectFirstResultOnDropDown (searchText) {
 
 
+
+    await homePage.typeTopSearch(searchText)
+
+    await homePage.clickResultItem()
+
+    await productDetailsPage.checkPageLoad()
 
 }

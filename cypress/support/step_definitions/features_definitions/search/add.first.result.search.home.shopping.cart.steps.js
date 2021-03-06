@@ -17,17 +17,18 @@ let fadedShortSleeveProduct = {
 
 When(`I add a product 'Faded Short Sleeve' to the shoping cart from the first search result`, () => {
 
-
-
-    let selectProductsOptions =  productDetailsSteps.selectProductsOptions
-
-    homeSteps.selectFirstResultOnDropDown(fadedShortSleeveProduct.name,productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct))
+execute()
 
 
 
-    // productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct)
+async function execute () {
+
+  await  homeSteps.selectFirstResultOnDropDown(fadedShortSleeveProduct.name)
+
+  await  productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct)
 
 
+}
 
 
 

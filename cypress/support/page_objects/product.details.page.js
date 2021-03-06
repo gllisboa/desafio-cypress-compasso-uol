@@ -22,24 +22,19 @@ export default class ProductDetails {
         }
 
 
+
     }
 
     checkQuantity(quantityExpect) {
         cy.get(productDetailsElements.quantityProduct())
             .should('have.value',quantityExpect)
+
     }
 
     checkPrice(priceExpect) {
-        cy.get(productDetailsElements.priceProduct)
+        cy.get(productDetailsElements.priceProduct())
             .should('have.value',priceExpect)
-    }
 
-    getValueQuantity() {
-
-        cy.get(productDetailsElements.quantityProduct())
-            .then((e) => {
-                return e.value
-            } )
     }
 
     plusQuantity(nTimes = 1) {
@@ -58,6 +53,7 @@ export default class ProductDetails {
             cy.get(productDetailsElements.quantityProduct())
                 .should('be.greaterThan', oldQuantity )
         }
+
 
 
     }
@@ -80,6 +76,7 @@ export default class ProductDetails {
         }
 
 
+
     }
 
 
@@ -87,6 +84,7 @@ export default class ProductDetails {
         cy.get(productDetailsElements.selectSizeAvaibleProduct())
             .select(size)
                 .should('have.text',size)
+
     }
 
     pickColor(color) {
@@ -95,6 +93,7 @@ export default class ProductDetails {
                 .find('a')
                     .filter(`:contains(${color.toLocaleLowerCase().replace(/\b\w/g, function(l){ return l.toUpperCase() })})`)
                         .click()
+
     }
 
 

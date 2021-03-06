@@ -11,6 +11,7 @@ export default class HomePage {
         cy.get(homeElements.inputSearch())
             .type(typeText).should('have.value', typeText)
 
+
 }
 
     clickResultItem(item = 'first') {
@@ -38,6 +39,7 @@ export default class HomePage {
                         .should('contain.text',item)
                             .click()
         }
+
     }
 
 }

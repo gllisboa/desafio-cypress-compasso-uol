@@ -1,0 +1,24 @@
+{
+  "name": "desafio-cypress-compasso-uol",
+  "version": "1.0.0",
+  "description": "Desafio para automatizar a page MyStore",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^6.6.0",
+    "cypress-cucumber-preprocessor": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gllisboa/desafio-cypress-compasso-uol.git"
+  },
+  "author": "Guilherme Luz Lisboa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gllisboa/desafio-cypress-compasso-uol/issues"
+  },
+  "homepage": "https://github.com/gllisboa/desafio-cypress-compasso-uol#readme"
+}

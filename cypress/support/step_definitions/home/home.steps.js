@@ -25,8 +25,8 @@ Given('acess to home page', () => {
 export function selectFirstResultOnDropDown (searchText) {
 
     // homePage.typeTopSearch(searchText)
-    homePage.typeTopSearch('Chiffon Dress')
-    homePage.clickResultItem('Printed Summer Dress')
+    homePage.typeTopSearch(searchText)
+    homePage.clickResultItem(searchText)
 
 
 }

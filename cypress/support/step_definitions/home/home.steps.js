@@ -26,7 +26,7 @@ export function selectFirstResultOnDropDown (searchText) {
 
     // homePage.typeTopSearch(searchText)
     homePage.typeTopSearch(searchText)
-    homePage.clickResultItem(searchText)
+    homePage.clickResultItem()
 
 
 }

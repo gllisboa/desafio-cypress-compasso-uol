@@ -4,7 +4,7 @@ export default class HomeElements {
     inputSearch () { return '#search_query_top'}
 
     //Btn Submit Search Form
-    btnSubmitSeacrh () { return '#searchbox > button"'}
+    btnSubmitSeacrh () { return '#searchbox > button'}
 
     //Div content Results Dropdown
     divResultsSearchDropDow () { return 'div.ac_results'}

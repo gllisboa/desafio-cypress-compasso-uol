@@ -32,7 +32,6 @@ async function execute () {
 
   await  productDetailsSteps.addProductShopCart(fadedShortSleeveProduct)
 
-  await  shopCartSteps.verifyProductAdd()
 
 
 
@@ -43,6 +42,9 @@ async function execute () {
 })
 
 Then('the product is added to my shoping cart', () => {
+
+    shopCartSteps.verifyProductAdd(fadedShortSleeveProduct)
+
 
 
 

@@ -13,11 +13,15 @@ import ShopCartPage from '../../page_objects/shopCart.page'
 const shopCartPage = new ShopCartPage
 
 
-export async function verifyProductAdd() {
+export async function verifyProductAdd(product) {
+
+
 
         await shopCartPage.openShopCart()
 
         await shopCartPage.checkPageLoad()
+
+        await shopCartPage.verifyProductAtShopCart('first',product)
 
 
 }

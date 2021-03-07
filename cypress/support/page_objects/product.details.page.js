@@ -30,7 +30,6 @@ export default class ProductDetails {
                 break
         }
 
-        return true 
 
     }
 

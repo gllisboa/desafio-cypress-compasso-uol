@@ -7,7 +7,7 @@ const shopCartElements = new ShopCartElements
 export default class ShopCart {
 
 
-    checkPageLoad (status = 200) {
+    async checkPageLoad (status = 200) {
 
         switch (status) {
 
@@ -51,6 +51,42 @@ export default class ShopCart {
 
     }
 
+    verifyProductAtShopCart(row = 'first', product) {
 
+        console.table(product)
+
+        if (row = 'frist') {
+            cy.get(shopCartElements.rowProductShopCart())
+                .first()
+                    .find('td')
+                        .as('tdListFirstProductRow')
+                            .filter('.cart_description')
+                                .find('p.product-name')
+                                    .find('a')
+                                        .invoke('text')
+                                            .should('contain',product.name)
+                .get('@tdListFirstProductRow')
+                    .filter('.cart_unit')
+                        .find('span > span.price')
+                            .invoke('text')
+                                .should('equal',`$${product.price}`)
+
+                .get('@tdListFirstProductRow')
+                    .filter('.cart_quantity')
+                        .find('input.cart_quantity_input')
+                            .invoke('val')
+                                .should('equal',product.quantity.toString())
+
+                .get('@tdListFirstProductRow')
+                    .filter('.cart_total')
+                                    .find('span.price')
+                                        .invoke('text')
+                                            .should('contain', `$${product.quantity * product.price}`)
+
+
+    }
+
+
+  }
 
 }

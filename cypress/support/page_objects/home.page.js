@@ -7,19 +7,19 @@ const homeElements = new HomeElements()
 export default class HomePage {
 
 
-    async typeTopSearch(typeText) {
-        await cy.get(homeElements.inputSearch())
+     async typeTopSearch(typeText) {
+        cy.get(homeElements.inputSearch())
             .type(typeText).should('have.value', typeText)
+
+            return true
 
 
 }
 
-    async clickResultItem(item = 'first') {
-    //    cy.get(homeElements.divResultsSearchDropDow())
-    //         .should('be.visible')
+    clickResultItem(item = 'first') {
 
-            //create a route for detailsProductPage for assert load after click item
-            cy.intercept(
+         //create a route for detailsProductPage for assert load after click item
+         cy.intercept(
                 {
                   method: 'GET',
                   url: 'index.php?id_product=*&controller=product',  
@@ -39,6 +39,8 @@ export default class HomePage {
                         .should('contain.text',item)
                             .click()
         }
+
+        return true 
 
     }
 

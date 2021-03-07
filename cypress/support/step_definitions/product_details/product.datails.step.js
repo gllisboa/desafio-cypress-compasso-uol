@@ -16,7 +16,7 @@ import ProductDetailsPage from '../../page_objects/product.details.page'
 
 const productDetailsPage = new ProductDetailsPage
 
-export  function selectProductsOptions (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
+export  async function selectProductsOptions (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
 
     productDetailsPage.plusQuantity(product.quantity - 1)
 
@@ -24,17 +24,46 @@ export  function selectProductsOptions (product = {name: '', price: 0, quantity:
 
     productDetailsPage.pickColor(product.color)
 
+    Promise.resolve()
+
+}
+
+
+export async function checkProductsDetails (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
+
+    productDetailsPage.checkPrice(product.price)
+
+    productDetailsPage.checkName(product.name)
+
+    Promise.resolve()
+
+}
+
+export async function addProductShopCart(product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
+
+
+    await productDetailsPage.clickAddShopCart()
+
+    productDetailsPage.checkSuccessMessage('Product successfully added to your shopping cart')
+
+    productDetailsPage.checkNameProductSuccesLayer(product.name)
+
+    productDetailsPage.checkAttributesProductSuccesLayer(product)
+
+    productDetailsPage.checkNamePriceSuccesLayer(product)
+
+    productDetailsPage.clickBtnCloseLayer()
+
+    Promise.resolve()
+
+
+
+
+
+
 }
 
 
-export function checkProducts (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
-
-    productDetailsPage.checkPrice(price)
-
-    productDetailsPage.checkName(name)
-
-
-}
 
 
 

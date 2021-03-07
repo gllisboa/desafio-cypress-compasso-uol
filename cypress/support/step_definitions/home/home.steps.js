@@ -24,14 +24,19 @@ Given('acess to home page', () => {
 })
 
 
-export async function selectFirstResultOnDropDown (searchText) {
+export function selectFirstResultOnDropDown (searchText) {
 
 
 
-    await homePage.typeTopSearch(searchText)
+    homePage.typeTopSearch(searchText)
 
-    await homePage.clickResultItem()
+    homePage.clickResultItem()
 
-    await productDetailsPage.checkPageLoad()
+    productDetailsPage.checkPageLoad()
 
+    Promise.resolve()
+
+
+
+    console.log('ultimo select')
 }

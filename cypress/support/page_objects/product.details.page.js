@@ -8,6 +8,7 @@ export default class ProductDetails {
 
 
 
+
     checkPageLoad(status = 200) {
 
         switch (status) {
@@ -29,7 +30,60 @@ export default class ProductDetails {
                 break
         }
 
+        return true 
 
+    }
+
+
+    clickOpenShopCart () {
+
+        cy.get(productDetailsElements.shopCart())
+            .click()
+    }
+
+
+    clickAddShopCart() {
+
+        cy.get(productDetailsElements.btnAddShopCart())
+            .should('be.visible')
+                .click()
+                    .get('[title="Close window"]')
+                        .click({ force: true })
+
+    }
+
+    clickBtnCloseLayer(){
+        cy.get(productDetailsElements.btnCloseLayer())
+            .click()
+    }
+
+    checkSuccessMessage(message) {
+
+        cy.get(productDetailsElements.successMessageAddShopCartProduct())
+            .should('be.visible')
+                .invoke('text')
+                    .should('contain', message)
+    }
+
+    checkNameProductSuccesLayer(name) {
+        cy.get(productDetailsElements.nameProductSuccessLayer())
+            .should('be.visible')
+                .invoke('text')
+                    .should('contain', name)
+    }
+
+    checkAttributesProductSuccesLayer(attributes = { color: '', size: '' }) {
+        cy.get(productDetailsElements.attributesProductSuccessLayer())
+            .should('be.visible')
+                .invoke('text')
+                    .should('equal', `${attributes.color}, ${attributes.size}`)
+    }
+
+    checkNamePriceSuccesLayer(product = { quantity: '', price: '' }) {
+        cy.get(productDetailsElements.priceProductSuccessLayer())
+            .should('be.visible')
+                .invoke('text')
+                    .should('equal', `$${product.quantity * product.price}`)
 
     }
 
@@ -37,7 +91,7 @@ export default class ProductDetails {
     checkName(name) {
         cy.get(productDetailsElements.titleProduct())
             .invoke('text')
-                .should('equal',name)
+                .should('contain',name)
     }
 
     checkQuantity(quantityExpect) {
@@ -48,12 +102,12 @@ export default class ProductDetails {
 
     checkPrice(priceExpect) {
         cy.get(productDetailsElements.priceProduct())
-            .should('have.value',priceExpect)
+            .invoke('text')
+                .should('equal',`$${priceExpect}`)
 
     }
 
     async plusQuantity(nTimes = 1) {
-        console.log('plues quant')
 
 
         for (let times = 0; times < nTimes; times++) {

@@ -4,6 +4,7 @@
 
 const homeSteps = require('../../home/home.steps')
 const productDetailsSteps = require('../../product_details/product.datails.step')
+const shopCartSteps = require('../../shop_cart/shop.cart.steps')
 
 
 let fadedShortSleeveProduct = {
@@ -24,10 +25,15 @@ execute()
 async function execute () {
 
   await  homeSteps.selectFirstResultOnDropDown(fadedShortSleeveProduct.name)
-
+ 
   await  productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct)
 
-  await  productDetailsSteps.checkProducts(fadedShortSleeveProduct)
+  await  productDetailsSteps.checkProductsDetails(fadedShortSleeveProduct)
+
+  await  productDetailsSteps.addProductShopCart(fadedShortSleeveProduct)
+
+  await  shopCartSteps.verifyProductAdd()
+
 
 
 }

@@ -7,16 +7,16 @@ const homeElements = new HomeElements()
 export default class HomePage {
 
 
-    typeTopSearch(typeText) {
-        cy.get(homeElements.inputSearch())
+    async typeTopSearch(typeText) {
+        await cy.get(homeElements.inputSearch())
             .type(typeText).should('have.value', typeText)
 
 
 }
 
-    clickResultItem(item = 'first') {
-        cy.get(homeElements.divResultsSearchDropDow())
-            .should('be.visible')
+    async clickResultItem(item = 'first') {
+    //    cy.get(homeElements.divResultsSearchDropDow())
+    //         .should('be.visible')
 
             //create a route for detailsProductPage for assert load after click item
             cy.intercept(

@@ -15,41 +15,26 @@ import ProductDetailsPage from '../../page_objects/product.details.page'
 
 
 const productDetailsPage = new ProductDetailsPage
-const productDetailsElements = new ProductDetailsElements
 
-export function selectProductsOptions (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
+export  function selectProductsOptions (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
 
-    // assertQuantity(product.quantity)
+    productDetailsPage.plusQuantity(product.quantity - 1)
+
+    productDetailsPage.selectSize(product.size)
+
+    productDetailsPage.pickColor(product.color)
 
 }
 
 
 export function checkProducts (product = {name: '', price: 0, quantity: 0, size: '', color: '' }) {
 
+    productDetailsPage.checkPrice(price)
 
+    productDetailsPage.checkName(name)
 
 
 }
 
 
-function assertQuantity (pQuantity) {
-    cy.get(productDetailsElements.quantityProduct())
-        .should('be.visible')
-            .then((quantity) => {
 
-                while(pQuantity !== quantity) {
-                    if(pQuantity < quantity){
-                        let times = quantity - pQuantity
-                        productDetailsPage.plusQuantity(times)
-                    }else if (pQuantity > quantity) {
-                        let times = pQuantity - quantity
-                        productDetailsPage.plusQuantity(times)
-                    }
-
-                }
-                quantity.val()
-
-                console.table(quantity.children)
-
-            })
-}

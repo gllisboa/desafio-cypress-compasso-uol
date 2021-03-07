@@ -27,6 +27,8 @@ async function execute () {
 
   await  productDetailsSteps.selectProductsOptions(fadedShortSleeveProduct)
 
+  await  productDetailsSteps.checkProducts(fadedShortSleeveProduct)
+
 
 }
 

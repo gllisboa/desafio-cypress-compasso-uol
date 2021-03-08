@@ -24,7 +24,7 @@ Given('acess to home page', () => {
 })
 
 
-export function selectFirstResultOnDropDown (searchText) {
+export async function selectFirstResultOnDropDown (searchText) {
 
 
 
@@ -38,5 +38,4 @@ export function selectFirstResultOnDropDown (searchText) {
 
 
 
-    console.log('ultimo select')
 }
